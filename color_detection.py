@@ -12,7 +12,6 @@ import logging
 import os
 from typing import Tuple
 
-import cv2
 import pandas as pd
 
 LOGGER = logging.getLogger(__name__)
@@ -38,6 +37,10 @@ def get_color_name(csv: pd.DataFrame, R: int, G: int, B: int) -> str:
 
 
 def run_interactive(image_path: str, color_db_path: str) -> None:
+    # Import OpenCV lazily so lightweight unit tests that only exercise
+    # CSV loading don't require the `cv2` binary at import time.
+    import cv2
+
     img = cv2.imread(image_path)
     if img is None:
         raise ValueError(f"Unable to read image: {image_path}")

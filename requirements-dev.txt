@@ -1,0 +1,2 @@
+opencv-python-headless>=4.7.0
+ruff>=0.0.297
