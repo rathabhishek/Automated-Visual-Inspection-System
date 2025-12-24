@@ -132,24 +132,24 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-        - name: Restore Buildx cache
-          uses: actions/cache@v4
-          with:
-            path: /tmp/.buildx-cache
-            key: ${{ runner.os }}-buildx-${{ github.ref_name }}-${{ hashFiles('**/Dockerfile') }}
-            restore-keys: |
-              ${{ runner.os }}-buildx-${{ github.ref_name }}-
-              ${{ runner.os }}-buildx-
+      - name: Restore Buildx cache
+        uses: actions/cache@v4
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-${{ github.ref_name }}-${{ hashFiles('**/Dockerfile') }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-${{ github.ref_name }}-
+            ${{ runner.os }}-buildx-
 
-        - name: Build (with cache)
-          uses: docker/build-push-action@v4
-          with:
-            context: .
-            push: false
-            load: true
-            tags: avi-color-detector:${{ github.sha }}
-            cache-from: type=local,src=/tmp/.buildx-cache
-            cache-to: type=local,dest=/tmp/.buildx-cache,mode=max
+      - name: Build (with cache)
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          push: false
+          load: true
+          tags: avi-color-detector:${{ github.sha }}
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache,mode=max
 
       - name: Save image artifact
         run: |
@@ -179,24 +179,24 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-        - name: Restore Buildx cache
-          uses: actions/cache@v4
-          with:
-            path: /tmp/.buildx-cache
-            key: ${{ runner.os }}-buildx-${{ github.ref_name }}-${{ hashFiles('**/Dockerfile') }}
-            restore-keys: |
-              ${{ runner.os }}-buildx-${{ github.ref_name }}-
-              ${{ runner.os }}-buildx-
+      - name: Restore Buildx cache
+        uses: actions/cache@v4
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-${{ github.ref_name }}-${{ hashFiles('**/Dockerfile') }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-${{ github.ref_name }}-
+            ${{ runner.os }}-buildx-
 
-        - name: Build image for test (use cache)
-          uses: docker/build-push-action@v4
-          with:
-            context: .
-            push: false
-            load: true
-            tags: avi-color-detector:${{ github.sha }}
-            cache-from: type=local,src=/tmp/.buildx-cache
-            cache-to: type=local,dest=/tmp/.buildx-cache,mode=max
+      - name: Build image for test (use cache)
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          push: false
+          load: true
+          tags: avi-color-detector:${{ github.sha }}
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache,mode=max
 
       - name: Run pytest inside container
         run: |
@@ -223,23 +223,23 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-        - name: Restore Buildx cache
-          uses: actions/cache@v4
-          with:
-            path: /tmp/.buildx-cache
-            key: ${{ runner.os }}-buildx-${{ github.ref_name }}-${{ hashFiles('**/Dockerfile') }}
-            restore-keys: |
-              ${{ runner.os }}-buildx-${{ github.ref_name }}-
-              ${{ runner.os }}-buildx-
+      - name: Restore Buildx cache
+        uses: actions/cache@v4
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-${{ github.ref_name }}-${{ hashFiles('**/Dockerfile') }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-${{ github.ref_name }}-
+            ${{ runner.os }}-buildx-
 
-        - name: Build and push image to GHCR
-          uses: docker/build-push-action@v4
-          with:
-            context: .
-            push: true
-            tags: ghcr.io/${{ github.repository_owner }}/automated-visual-inspection-system:${{ github.sha }}
-            cache-from: type=local,src=/tmp/.buildx-cache
-            cache-to: type=local,dest=/tmp/.buildx-cache,mode=max
+      - name: Build and push image to GHCR
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          push: true
+          tags: ghcr.io/${{ github.repository_owner }}/automated-visual-inspection-system:${{ github.sha }}
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache,mode=max
   package:
     name: Build sdist/wheel
     runs-on: ubuntu-latest
