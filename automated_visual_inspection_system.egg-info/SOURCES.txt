@@ -1,0 +1,12 @@
+README.md
+pyproject.toml
+setup.cfg
+automated_visual_inspection_system.egg-info/PKG-INFO
+automated_visual_inspection_system.egg-info/SOURCES.txt
+automated_visual_inspection_system.egg-info/dependency_links.txt
+automated_visual_inspection_system.egg-info/requires.txt
+automated_visual_inspection_system.egg-info/top_level.txt
+avi_color_detection/__init__.py
+avi_color_detection/color_detection.py
+tests/test_get_color_name.py
+tests/test_import.py
