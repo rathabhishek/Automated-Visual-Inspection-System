@@ -1,6 +1,6 @@
 # Automated Visual Inspection — Color Detection
 
-This repository contains a small color-detection utility and example assets. It has been aligned to reflect a professional engineering profile: Senior Software Engineer with expertise in cloud (AWS/Azure), Kubernetes, containerization, and event-driven architectures.
+This repository contains a small color-detection utility and example assets.
 
 **Summary:**
 - Lightweight OpenCV-based color picker demo written in Python.
@@ -28,11 +28,3 @@ Run the color picker (opens a window):
 ```powershell
 python color_detection.py -i path\to\image.jpg
 ```
-
-For containerization and deployment notes, see the repository owner or add a `Dockerfile` and Kubernetes manifests.
-
-## Security
-- Removed interactive notebook outputs from the repo. See `SECURITY.md` for disclosure guidance.
-
-## Contact
-If you want this repo tailored further for cloud-native demos (Dockerfile, Helm chart, or event-driven wiring), tell me which provider and I'll scaffold it.
